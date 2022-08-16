@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-services-demo',
+  templateUrl: './services-demo.component.html',
+  styleUrls: ['./services-demo.component.scss']
 })
-export class AppComponent {
+export class ServicesDemoComponent {
   accounts = [
     {
       name: 'Master Account',

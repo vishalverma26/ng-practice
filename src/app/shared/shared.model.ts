@@ -1,4 +1,5 @@
 export enum Tab {
   Directives = 'directives',
-  Components = 'components'
+  Components = 'components',
+  Services = 'services'
 }

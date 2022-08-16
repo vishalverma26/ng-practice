@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HighlightDirective } from './directives-demo/directives/highlight.directive';
 import { BetterHighlightDirective } from './directives-demo/directives/better-highlight.directive';
@@ -11,6 +10,9 @@ import { CockpitComponent } from './components-demo/cockpit/cockpit.component';
 import { HeaderComponent } from './header/header.component';
 import { DirectivesDemoComponent } from './directives-demo/directives-demo.component';
 import { ComponentsDemoComponent } from './components-demo/components-demo.component';
+import { ServicesDemoComponent } from './services-demo/services-demo.component';
+import { AccountComponent } from './services-demo/account/account.component';
+import { NewAccountComponent } from './services-demo/new-account/new-account.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { ComponentsDemoComponent } from './components-demo/components-demo.compo
     CockpitComponent,
     HeaderComponent,
     DirectivesDemoComponent,
-    ComponentsDemoComponent
+    ComponentsDemoComponent,
+    ServicesDemoComponent,
+    AccountComponent,
+    NewAccountComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
