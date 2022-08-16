@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- HighLight Demo -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="highlight-demo" appHighlight>
+            Highlight Directive - Demo
+          </div>
+        </div>
+      </div>
+
+      <!-- Better HighLight Demo -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="highlight-demo" appBetterHighlight>
+            Better Highlight Directive - Demo Without Parameter
+          </div>
+
+          <div class="highlight-demo" appBetterHighlight="lightgreen" highlightColor="lightyellow">
+            Better Highlight Directive - Demo With Parameter
+          </div>
+        </div>
+      </div>
+
+      <!-- Unless Directive Demo -->
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Unless Directive Demo - False</p>
+          <div class="highlight-demo" appBetterHighlight="lightgreen" highlightColor="lightyellow" *appUnless="false">
+            Unless Directive Demo
+          </div>
+
+          <p>Unless Directive Demo - True</p>
+          <div class="highlight-demo" appBetterHighlight="lightgreen" highlightColor="lightyellow" *appUnless="true">
+            Unless Directive Demo
+          </div>
+        </div>
+      </div>
+
+      <!-- Ng Switch Demo -->
+      <div class="row">
+        <div class="col-xs-12">
+          <p>NgSwitch Demo</p>
+          <ul [ngSwitch]="value">
+            <li *ngSwitchCase="1">Value is 1</li>
+            <li *ngSwitchCase="2">Value is 2</li>
+            <li *ngSwitchCase="3">Value is 3</li>
+            <li *ngSwitchDefault>default</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
