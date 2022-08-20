@@ -13,6 +13,20 @@ import { ComponentsDemoComponent } from './components-demo/components-demo.compo
 import { ServicesDemoComponent } from './services-demo/services-demo.component';
 import { AccountComponent } from './services-demo/account/account.component';
 import { NewAccountComponent } from './services-demo/new-account/new-account.component';
+import { FormsModule } from '@angular/forms';
+import { LoggingService } from './services-demo/services/logging.service';
+import { EditServerComponent } from './routing-demo/servers/edit-server/edit-server.component';
+import { ServerComponent } from './routing-demo/servers/server/server.component';
+import { UserComponent } from './routing-demo/users/user/user.component';
+import { UsersComponent } from './routing-demo/users/users.component';
+import { ServersComponent } from './routing-demo/servers/servers.component';
+import { HomeComponent } from './routing-demo/home/home.component';
+import { RoutingDemoComponent } from './routing-demo/routing-demo.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { ObservablesDemoComponent } from './observables-demo/observables-demo.component';
+import { ObservableUserComponent } from './observables-demo/observable-user/observable-user.component';
+import { ObservableHomeComponent } from './observables-demo/observable-home/observable-home.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +41,25 @@ import { NewAccountComponent } from './services-demo/new-account/new-account.com
     ComponentsDemoComponent,
     ServicesDemoComponent,
     AccountComponent,
-    NewAccountComponent
+    NewAccountComponent,
+    RoutingDemoComponent,
+    HomeComponent,
+    ServersComponent,
+    UsersComponent,
+    UserComponent,
+    ServerComponent,
+    EditServerComponent,
+    NotFoundComponent,
+    ObservablesDemoComponent,
+    ObservableUserComponent,
+    ObservableHomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

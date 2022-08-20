@@ -1,31 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AccountsService } from './services/accounts.service';
 
 @Component({
   selector: 'app-services-demo',
   templateUrl: './services-demo.component.html',
-  styleUrls: ['./services-demo.component.scss']
+  styleUrls: ['./services-demo.component.scss'],
+  providers: []
 })
-export class ServicesDemoComponent {
-  accounts = [
-    {
-      name: 'Master Account',
-      status: 'active'
-    },
-    {
-      name: 'Testaccount',
-      status: 'inactive'
-    },
-    {
-      name: 'Hidden Account',
-      status: 'unknown'
-    }
-  ];
+export class ServicesDemoComponent implements OnInit {
+  accounts: {name: string, status: string}[];
 
-  onAccountAdded(newAccount: {name: string, status: string}) {
-    this.accounts.push(newAccount);
+  ngOnInit() {
+    this.accounts = this.accountsSvc.accounts;
   }
 
-  onStatusChanged(updateInfo: {id: number, newStatus: string}) {
-    this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  constructor(private accountsSvc: AccountsService) {}
+
+  onAccountAdded(newAccount: {name: string, status: string}) {
+    this.accountsSvc.addAccount(newAccount.name, newAccount.status);
   }
 }
