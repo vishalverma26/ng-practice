@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { interval, Observable, Subscription } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-observable-home',
@@ -23,25 +24,24 @@ export class ObservableHomeComponent implements OnInit, OnDestroy {
         observer.next(++count);
         // complete observable
         // A complete observable DOES NOT emit any value!
-        if(count > 3) {
+        if (count > 3) {
           observer.complete();
         }
 
         // error case for observable
-        if(count > 4) {
+        if (count > 4) {
           observer.error(new Error('Count has reached above 4!'));
         }
       }, 1000);
     });
 
-    this.subscription.add(customIntervalObservable.subscribe((data) => {
-      console.log(data + ' from our custom observable');
+    this.subscription.add(customIntervalObservable.pipe(filter(data => data > 1), map((data: number) => data + ' - data from our own custom observable!')).subscribe((data) => {
+      console.log(data);
     }, error => {
       console.log(error);
     }, () => {
       console.log('Observable completed!')
     }));
-
   }
 
 

@@ -5,6 +5,7 @@ import { DirectivesDemoComponent } from "./directives-demo/directives-demo.compo
 import { ObservableHomeComponent } from "./observables-demo/observable-home/observable-home.component";
 import { ObservableUserComponent } from "./observables-demo/observable-user/observable-user.component";
 import { ObservablesDemoComponent } from "./observables-demo/observables-demo.component";
+import { ReactiveFormsDemoComponent } from "./reactive-forms-demo/reactive-forms-demo.component";
 import { HomeComponent } from "./routing-demo/home/home.component";
 import { RoutingDemoComponent } from "./routing-demo/routing-demo.component";
 import { EditServerComponent } from "./routing-demo/servers/edit-server/edit-server.component";
@@ -14,6 +15,7 @@ import { UserComponent } from "./routing-demo/users/user/user.component";
 import { UsersComponent } from "./routing-demo/users/users.component";
 import { ServicesDemoComponent } from "./services-demo/services-demo.component";
 import { NotFoundComponent } from "./shared/not-found/not-found.component";
+import { TemplateFormsDemoComponent } from "./template-forms-demo/template-forms-demo.component";
 
 const routes: Routes = [
   {
@@ -97,6 +99,14 @@ const routes: Routes = [
         component: ObservableUserComponent
       }
     ]
+  },
+  {
+    path: 'template-forms-demo',
+    component: TemplateFormsDemoComponent
+  },
+  {
+    path: 'reactive-forms-demo',
+    component: ReactiveFormsDemoComponent
   },
   {
     path: 'not-found',

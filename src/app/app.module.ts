@@ -13,7 +13,7 @@ import { ComponentsDemoComponent } from './components-demo/components-demo.compo
 import { ServicesDemoComponent } from './services-demo/services-demo.component';
 import { AccountComponent } from './services-demo/account/account.component';
 import { NewAccountComponent } from './services-demo/new-account/new-account.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoggingService } from './services-demo/services/logging.service';
 import { EditServerComponent } from './routing-demo/servers/edit-server/edit-server.component';
 import { ServerComponent } from './routing-demo/servers/server/server.component';
@@ -27,6 +27,10 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { ObservablesDemoComponent } from './observables-demo/observables-demo.component';
 import { ObservableUserComponent } from './observables-demo/observable-user/observable-user.component';
 import { ObservableHomeComponent } from './observables-demo/observable-home/observable-home.component';
+import { TemplateFormsDemoComponent } from './template-forms-demo/template-forms-demo.component';
+import { APP_BASE_HREF, HashLocationStrategy } from '@angular/common';
+import { ParameterHashLocationStrategy } from './shared/param-location.service';
+import { ReactiveFormsDemoComponent } from './reactive-forms-demo/reactive-forms-demo.component';
 
 @NgModule({
   declarations: [
@@ -52,14 +56,23 @@ import { ObservableHomeComponent } from './observables-demo/observable-home/obse
     NotFoundComponent,
     ObservablesDemoComponent,
     ObservableUserComponent,
-    ObservableHomeComponent
+    ObservableHomeComponent,
+    TemplateFormsDemoComponent,
+    ReactiveFormsDemoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [LoggingService],
+  providers: [LoggingService, {
+    provide: HashLocationStrategy,
+    useClass: ParameterHashLocationStrategy
+  }, {
+    provide: APP_BASE_HREF,
+    useValue: window.location.pathname
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
