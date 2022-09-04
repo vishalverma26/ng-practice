@@ -31,6 +31,16 @@ import { TemplateFormsDemoComponent } from './template-forms-demo/template-forms
 import { APP_BASE_HREF, HashLocationStrategy } from '@angular/common';
 import { ParameterHashLocationStrategy } from './shared/param-location.service';
 import { ReactiveFormsDemoComponent } from './reactive-forms-demo/reactive-forms-demo.component';
+import { PipesDemoComponent } from './pipes-demo/pipes-demo.component';
+import { ShortenPipe } from './shared/shorten.pipe';
+import { FilterPipe } from './shared/filter.pipe';
+import { ReversePipe } from './shared/reverse.pipe';
+import { SortPipe } from './shared/sort.pipe';
+import { HTTPDemoComponent } from './httpdemo/httpdemo.component';
+import { ToggleDropdownDirective } from './shared/toggle-dropdown.directive';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './httpdemo/auth-interceptor.service';
+import { LoggingInterceptorService } from './httpdemo/logging-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -58,21 +68,44 @@ import { ReactiveFormsDemoComponent } from './reactive-forms-demo/reactive-forms
     ObservableUserComponent,
     ObservableHomeComponent,
     TemplateFormsDemoComponent,
-    ReactiveFormsDemoComponent
+    ReactiveFormsDemoComponent,
+    PipesDemoComponent,
+    ShortenPipe,
+    FilterPipe,
+    ReversePipe,
+    SortPipe,
+    HTTPDemoComponent,
+    ToggleDropdownDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [LoggingService, {
-    provide: HashLocationStrategy,
-    useClass: ParameterHashLocationStrategy
-  }, {
-    provide: APP_BASE_HREF,
-    useValue: window.location.pathname
-  }],
+  providers: [
+    LoggingService,
+    {
+      provide: HashLocationStrategy,
+      useClass: ParameterHashLocationStrategy
+    },
+    {
+      provide: APP_BASE_HREF,
+      useValue: window.location.pathname
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorService,
+      multi: true
+    },
+    // Order in which we inject interceptors matter as they run as per order
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

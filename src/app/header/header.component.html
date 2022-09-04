@@ -1,13 +1,23 @@
 <nav class="navbar navbar-default">
   <div class="container">
     <ul class="nav navbar-nav">
-      <li> <a [routerLink]="'directives-demo'"> Directives Demo </a> </li>
-      <li> <a [routerLink]="'components-demo'"> Components Demo </a> </li>
-      <li> <a [routerLink]="'services-demo'"> Services Demo </a> </li>
-      <li> <a [routerLink]="'routing-demo'"> Routing Demo </a> </li>
-      <li> <a [routerLink]="'observables-demo'"> Observables Demo </a> </li>
-      <li> <a [routerLink]="'template-forms-demo'"> Template Forms Demo </a> </li>
-      <li> <a [routerLink]="'reactive-forms-demo'"> Reactive Forms Demo </a> </li>
+      <li [routerLinkActive]="'active'"> <a [routerLink]="'directives-demo'"> Directives Demo </a> </li>
+      <li [routerLinkActive]="'active'"> <a [routerLink]="'components-demo'"> Components Demo </a> </li>
+      <li [routerLinkActive]="'active'"> <a [routerLink]="'services-demo'"> Services Demo </a> </li>
+      <li [routerLinkActive]="'active'"> <a [routerLink]="'routing-demo'"> Routing Demo </a> </li>
+      <li [routerLinkActive]="'active'" class="dropdown" toggleDropdown>
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+          Forms Demo
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li [routerLinkActive]="'active'"><a [routerLink]="'forms-demo/template-forms-demo'">Template Forms Demo</a></li>
+          <li [routerLinkActive]="'active'"><a [routerLink]="'forms-demo/reactive-forms-demo'">Reactive Forms Demo</a></li>
+        </ul>
+      </li>
+      <li [routerLinkActive]="'active'"> <a [routerLink]="'observables-demo'"> Observables Demo </a> </li>
+      <li [routerLinkActive]="'active'"> <a [routerLink]="'pipes-demo'"> Pipes Demo </a> </li>
+      <li [routerLinkActive]="'active'"> <a [routerLink]="'http-demo'"> HTTP Demo </a> </li>
     </ul>
   </div>
 </nav>

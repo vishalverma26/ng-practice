@@ -2,9 +2,11 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ComponentsDemoComponent } from "./components-demo/components-demo.component";
 import { DirectivesDemoComponent } from "./directives-demo/directives-demo.component";
+import { HTTPDemoComponent } from "./httpdemo/httpdemo.component";
 import { ObservableHomeComponent } from "./observables-demo/observable-home/observable-home.component";
 import { ObservableUserComponent } from "./observables-demo/observable-user/observable-user.component";
 import { ObservablesDemoComponent } from "./observables-demo/observables-demo.component";
+import { PipesDemoComponent } from "./pipes-demo/pipes-demo.component";
 import { ReactiveFormsDemoComponent } from "./reactive-forms-demo/reactive-forms-demo.component";
 import { HomeComponent } from "./routing-demo/home/home.component";
 import { RoutingDemoComponent } from "./routing-demo/routing-demo.component";
@@ -101,12 +103,30 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'template-forms-demo',
-    component: TemplateFormsDemoComponent
+    path: 'forms-demo',
+    children: [
+      {
+        path: '',
+        redirectTo: 'template-forms-demo',
+        pathMatch: 'full'
+      },
+      {
+        path: 'template-forms-demo',
+        component: TemplateFormsDemoComponent
+      },
+      {
+        path: 'reactive-forms-demo',
+        component: ReactiveFormsDemoComponent
+      }
+    ]
   },
   {
-    path: 'reactive-forms-demo',
-    component: ReactiveFormsDemoComponent
+    path: 'pipes-demo',
+    component: PipesDemoComponent
+  },
+  {
+    path: 'http-demo',
+    component: HTTPDemoComponent
   },
   {
     path: 'not-found',
